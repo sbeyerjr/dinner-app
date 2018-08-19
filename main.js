@@ -114,7 +114,7 @@ function renderResult(result) {
 	const text_noimage = `
 	<div class="row">
 	<div class="col-2">
-	<img src="http://stevenbeyerjr.com/img/rest.jpg" class="thumb-img">
+	<img src="http://stevenbeyerjr.com/img/rest.jpg" class="thumb-img" alt="restaurant">
 	</div>
 	<div class="col-6">
 	<h2 class="restaurant-name">${rest.restaurant.name}</h2><br>
