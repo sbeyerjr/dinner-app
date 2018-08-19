@@ -21,7 +21,7 @@ function getDataFromApi(lat, lon, callback) {
   $.getJSON(ZOMATO_SEARCH_URL, query, callback);
 }
 
-
+// Must get the Latitude and Longtitude and provide it to Zomato API
 function getGoogleLatLong(data) {
   const latitude = data.results[0].geometry.location.lat;
   const longitude = data.results[0].geometry.location.lng;
@@ -42,6 +42,7 @@ function displayTopBar(){
  
 }
 
+//Give the user a new restaurant when the user clicks on the appropriate button
 function pickNewRestaurant (data){
 $('.js-top-bar').submit(event => {
     event.preventDefault();
@@ -154,7 +155,7 @@ function renderResult(result) {
 	$('.top-bar').removeClass('hidden');
 }
 
-
+//When the user click submit, feed the result to the Google API
 function watchSubmit() {
   $('.js-search-form').submit(event => {
     event.preventDefault();
