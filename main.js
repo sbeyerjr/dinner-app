@@ -83,7 +83,7 @@ function renderResult(result) {
 	const text = `
 	<div class="row top-results">
 	<div class="col-2">
-	<img src="${rest.restaurant.thumb}" class="thumb-img">
+	<img src="${rest.restaurant.thumb}" class="thumb-img" alt="${rest.restaurant.name}">
 	</div>
 	<div class="col-6">
 	<h2 class="restaurant-name">${rest.restaurant.name}</h2><br>
