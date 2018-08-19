@@ -35,7 +35,8 @@ button:hover {
     padding: 20px;
     text-align: center;
 }
-.top-search-box {
+
+.top-bar {
     margin: auto;
     background-color: #ecf0f1;
     border-radius: 3px;
@@ -57,7 +58,7 @@ button:hover {
 	background-color: white;
 	border-radius: 5px;
 	padding: 20px;
-	width:90%;
+	width: 90%;
 }
 
 .single-header {
@@ -94,9 +95,8 @@ button:hover {
 }
 
 .first-submit {
-	margin: 10px 0 10px 0;
 	background-color: #16a085;
-	color:white;
+	color: white;
 }
 
 .result-btn {
@@ -116,7 +116,7 @@ button:hover {
 }
 
 .price-range {
-	color:black;
+	color: black;
 }
 
 .hidden {
@@ -124,21 +124,31 @@ button:hover {
 }
 
 #js-query {
-	margin-bottom: 15px;
 	margin-top: 30px;
+}
+
+.btn-newplace, .btn-newcity {
+	background-color: #16a085;
+	color: white;
+	height: 65px;
 }
 
 @media only screen and (min-width: 640px) {
 
 	.result-btn {
-
 		width:80%;
 		float:right;
 	}
 
 	.js-search-results {
-
 		width: 100%;
+	}
+
+	.btn-newplace {
+		float: left;
+	}
+	.btn-newcity {
+		float: right;
 	}
 
 }

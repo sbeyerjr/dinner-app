@@ -22,18 +22,39 @@ function getDataFromApi(lat, lon, callback) {
 }
 
 
-function displayGoogleLatitude(data) {
+function getGoogleLatLong(data) {
   const latitude = data.results[0].geometry.location.lat;
   const longitude = data.results[0].geometry.location.lng;
   getDataFromApi(latitude, longitude, displayZomatoData);
+}
+
+function displayTopBar(){
+  const top_bar = `
+    <div class="col-12">
+    <form action="#" class="js-top-bar" name="search-newplace">
+          <button type="submit" class="btn-newplace">I Don't Like It...Pick a New Place for Me</button>
+        </form>
+        <form action="#" name="search-startover">
+          <button type="button" value="Refresh Page" onClick="window.location.reload()" class="btn-newcity">Start Over</button>
+        </form>
+      </div>`;
+   $('.top-bar').html(top_bar);
+ 
+}
+
+function pickNewRestaurant (data){
+$('.js-top-bar').submit(event => {
+    event.preventDefault();
+    renderResult(data);
+  });
 }
 
 
 function displayZomatoData(data) {
 	const results = data.restaurants;
 	renderResult(data);
+	pickNewRestaurant(data);
 }
-
 
 function renderResult(result) {
 	const outputElem = $('.js-search-results');
@@ -77,6 +98,7 @@ function renderResult(result) {
 	<p>Address: ${rest.restaurant.location.address}</p>
 	<p class="price-range">${priceRange()}</p>
 	<p>Average Cost for Two: $${rest.restaurant.average_cost_for_two}</p>
+	<p>Cuisine: ${rest.restaurant.cuisines}</p>
 	</div>
 	<div class="col-6">
 	<form action="http://www.google.com/maps/place/${rest.restaurant.location.latitude},${rest.restaurant.location.longitude}" target="_blank">
@@ -106,6 +128,7 @@ function renderResult(result) {
 	<p>Address: ${rest.restaurant.location.address}</p>
 	<p style="price-range">${priceRange()}</p>
 	<p>Average Cost for Two: $${rest.restaurant.average_cost_for_two}</p>
+	<p>Cuisine: ${rest.restaurant.cuisines}</p>
 	</div>
 	<div class="col-6">
 	<form action="http://www.google.com/maps/place/${rest.restaurant.location.latitude},${rest.restaurant.location.longitude}" target="_blank">
@@ -128,7 +151,7 @@ function renderResult(result) {
 	$('.js-search-results').removeClass('hidden');
 	$('.search-box').addClass('hidden');
 	$('.box').addClass('hidden');
-	$('.top-search-box').removeClass('hidden');
+	$('.top-bar').removeClass('hidden');
 }
 
 
@@ -137,14 +160,12 @@ function watchSubmit() {
     event.preventDefault();
     const queryTarget = $(event.currentTarget).find('#js-query');
     const query = queryTarget.val();
-    const queryRadius = $(event.currentTarget).find('#radius');
-    const queryR = queryRadius.val();
-    const queryCuisine = $(event.currentTarget).find('#cuisine');
-    const queryC = queryCuisine.val();
     // clear out the input
     queryTarget.val("");
-    getAddress(query, displayGoogleLatitude);
+    getAddress(query, getGoogleLatLong);
+    displayTopBar();
   });
 }
 
 $(watchSubmit);
+
