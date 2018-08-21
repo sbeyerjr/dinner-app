@@ -1,5 +1,11 @@
 body {
-	background-color: #16a085;
+	background: 
+		linear-gradient(
+			rgba(22, 160, 133, 0.80),
+			rgba(22, 160, 133, 0.80)
+			),
+		url(http://stevenbeyerjr.com/img/rest.jpg);
+	background-size: cover;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -133,6 +139,14 @@ button:hover {
 	height: 65px;
 }
 
+.logo img {
+	margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 300px;
+}
+
 @media only screen and (min-width: 640px) {
 
 	.result-btn {
@@ -151,4 +165,7 @@ button:hover {
 		float: right;
 	}
 
+	.logo img {
+		width: 500px;
+	}
 }
