@@ -23,9 +23,25 @@ function getDataFromApi(lat, lon, callback) {
 
 // Must get the Latitude and Longtitude and provide it to Zomato API
 function getGoogleLatLong(data) {
+	const statusData = data.status;
+	console.log(data);
+
+	if (statusData !== "OK"){ //Test to see if it's a valid city.
+    try {
+        statusData += "OK"
+    } 
+    catch (e){
+        
+            alert("Not a valid city. Please pick a new city")
+    } 
+}
+else {
   const latitude = data.results[0].geometry.location.lat;
   const longitude = data.results[0].geometry.location.lng;
+  
+ 
   getDataFromApi(latitude, longitude, displayZomatoData);
+}
 }
 
 function displayTopBar(){
@@ -44,18 +60,31 @@ function displayTopBar(){
 
 //Give the user a new restaurant when the user clicks on the appropriate button
 function pickNewRestaurant (data){
-$('.js-top-bar').submit(event => {
+	$('.js-top-bar').submit(event => {
     event.preventDefault();
     renderResult(data);
-  });
-}
+  	});
+	}
 
 
 function displayZomatoData(data) {
+	const numOfResults = data.results_found;
+	//Test to see if there are any restaurants. 
+	if (numOfResults == ""){ 
+    try {
+        statusData += ""
+    } 
+    catch (e){
+        
+            alert("No restaurants available")
+    } 
+	}
+	else {
 	const results = data.restaurants;
 	renderResult(data);
 	pickNewRestaurant(data);
-}
+	}
+	}
 
 function renderResult(result) {
 	const outputElem = $('.js-search-results');
@@ -163,6 +192,7 @@ function watchSubmit() {
     const query = queryTarget.val();
     // clear out the input
     queryTarget.val("");
+
     getAddress(query, getGoogleLatLong);
     displayTopBar();
   });
