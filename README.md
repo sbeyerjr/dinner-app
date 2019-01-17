@@ -16,7 +16,7 @@ Click here to acccess the app --> https://sbeyerjr.github.io/restaurant-chooser/
 <ul>
   <li>HTML</li>
   <li>CSS</li>
-  <li>JS</li>
+  <li>JavaScript</li>
   <li>JQUERY</li>
  </ul>
 
