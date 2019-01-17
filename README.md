@@ -1,7 +1,9 @@
 # Random Restaurant Chooser
 Random Restaurant Chooser is an app that allows user to find a random restaurant in the city of their choice. If they do not
 like the choice, they can allow the app to pick another restaurant for them.
+
 Click here to acccess the app --> https://sbeyerjr.github.io/restaurant-chooser/
+
 #Screenshots
 ![image](http://stevenbeyerjr.com/img/newss.png)
 ![image](http://stevenbeyerjr.com/img/ssrc2.png)
