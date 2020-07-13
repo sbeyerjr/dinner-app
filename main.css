@@ -4,7 +4,7 @@ body {
 			rgba(22, 160, 133, 0.80),
 			rgba(22, 160, 133, 0.80)
 			),
-		url(http://stevenbeyerjr.com/img/rest.jpg);
+		url(/img/rest.jpg);
 	background-size: cover;
 	font-family: 'Roboto', sans-serif;
 }
